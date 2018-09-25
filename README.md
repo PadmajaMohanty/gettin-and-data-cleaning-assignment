@@ -1,8 +1,10 @@
-## getting-and-data-cleaning-assignment
+## readme.md file
+Download the requierd data.
 
+checking the working directory.
 getwd()
 
-Set the current working directory and then read the data using red.table().
+Setting the current working directory and then read the data using red.table().
 
 setwd("D:\study\coursera\3.getting and cleaning data\UCI HAR Dataset\test")
 
@@ -27,22 +29,20 @@ activity_labels <- read.table("activity_labels.txt")
 features <- read.table("features.txt")
 
 1. MERGING DATA
-Use rbind() to merge the train and test data sets.
+Used rbind() to merge the train and test data sets.
 
 data_set<-rbind(x_train,x_test)
 
 View(data_set)
 
-2. Extracts only the measurements on the mean and standard deviation for each measurement.
-Create a vector of only mean and std, use the vector to subset.
+2. Extracts only the measurements on the mean and standard deviation for each measurement. Create a vector of only mean and std, use the vector to subset.
 Using grep() to subset data starting with mean() or std().
 
 MeanStdOnly <- grep("mean()|std()", features[, 2])
 
 data_set <- data_set[,MeanStdOnly]
 
-4. Appropriately labels the data set with descriptive activity names.
-Create vector of "Clean" feature names by getting rid of "()" apply to the dataSet to rename labels.
+4. Appropriately labels the data set with descriptive activity names. Create vector of "Clean" feature names by getting rid of "()" apply to the dataSet to rename labels.
 
 CleanFeatureNames <- sapply(features[, 2], function(x) {gsub("[()]", "",x)})
 
@@ -63,6 +63,7 @@ Combine subject, activity, and mean and std only data set to create final data s
 data_set <- cbind(subject,activity, data_set)
 
 3. Uses descriptive activity names to name the activities in the data set group the activity column of data_set, re-name lable of levels with activity_levels, and apply it to dataSet.
+
 act_group <- factor(data_set$activity)
 
 levels(act_group) <- activity_labels[,2]
