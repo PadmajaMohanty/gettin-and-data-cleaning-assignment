@@ -1,4 +1,4 @@
-## gettin-and-data-cleaning-assignment
+## getting-and-data-cleaning-assignment
 
 getwd()
 
